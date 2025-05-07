@@ -1,0 +1,14 @@
+{
+    "listen": ":8080",
+    "backends": ["http://backend1:9001","http://backend2:9002","http://backend3:9003"],
+    "rate_limit": {
+      "capacity": 10,
+      "fill_rate": 5,
+      "clients": [
+        { "id": "127.0.0.1", "capacity": 4, "fill_rate": 2 },
+        { "id": "::1",       "capacity": 4, "fill_rate": 2 },
+        { "id": "172.18.0.5", "capacity": 5,  "fill_rate": 2 }
+      ]
+    }
+  }
+  

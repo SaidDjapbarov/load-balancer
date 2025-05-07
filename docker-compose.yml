@@ -1,0 +1,26 @@
+services:
+  backend1:
+    image: hashicorp/http-echo
+    command: ["-listen=:9001", "-text=Backend 1"]
+    ports:
+      - "9001:9001"
+
+  backend2:
+    image: hashicorp/http-echo
+    command: ["-listen=:9002", "-text=Backend 2"]
+    ports:
+      - "9002:9002"
+
+  backend3:
+    image: hashicorp/http-echo
+    command: ["-listen=:9003", "-text=Backend 3"]
+    ports:
+      - "9003:9003"
+
+  balancer:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./config.json:/app/config.json:ro
+    restart: unless-stopped
